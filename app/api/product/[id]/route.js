@@ -17,5 +17,5 @@ export const GET = async (_, { params }) => {
     const filterProductByTitle = data?.products?.find(
         (product) => convertTitleToHandle(product?.title) === productTitle
     );
-    return NextResponse.json(filterProductByTitle);
+    return NextResponse.json({ product: filterProductByTitle });
 };

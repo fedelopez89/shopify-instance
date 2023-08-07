@@ -22,7 +22,7 @@ import {
 const getListProductsClient = async () => {
   const response = await fetch("/api/products");
   const data = await response.json();
-  return data;
+  return data?.products;
 };
 
 const ListProducts = () => {

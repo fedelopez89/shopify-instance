@@ -25,7 +25,7 @@ import { useQuery } from "@tanstack/react-query";
 const getProductDetail = async ({ product }) => {
   const response = await fetch(`/api/product/${product}`);
   const data = await response.json();
-  return data;
+  return data?.product;
 };
 
 const ProductDetail = ({ product }) => {
