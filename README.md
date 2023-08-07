@@ -32,6 +32,14 @@ Given that Shopify provides access to products by ID and the requirement is to u
 - Uses Chakra UI for styling components and efficiently displaying product information.
 - Handles images with Next.js's `Image` component, including a replacement container in case the image isn't available.
 
+### Evidence
+- Product List Page
+<img width="1767" alt="image" src="https://github.com/fedelopez89/shopify-instance/assets/1664426/9997000c-66ba-4c10-a7d3-57bfd3cd67cb">
+
+- Detail Product Page
+<img width="1775" alt="image" src="https://github.com/fedelopez89/shopify-instance/assets/1664426/4ad09fc6-4126-4aab-9680-9d397e8010ec">
+
+
 ## Future Improvements
 
 1. Implement a system that allows directly fetching a product by slug from Shopify or some other optimization that reduces the need to fetch all products.
