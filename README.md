@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Product Detail Project with Next.js and Shopify
 
-## Getting Started
+This project focuses on displaying product details fetched from Shopify using Next.js for the front-end and React Query for data and cache management.
 
-First, run the development server:
+## Requirements
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- Required to load a product detail page using a slug.
+- The product is fetched from Shopify via their API.
+- React Query should be used for efficient data and cache management.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- Uses Shopify's API to fetch product data.
+- Converts product title into a slug to meet the requirement.
+- Uses React Query for data and cache management, optimizing API calls.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Implementation
 
-## Learn More
+### Getting product by slug:
 
-To learn more about Next.js, take a look at the following resources:
+Given that Shopify provides access to products by ID and the requirement is to use a slug, we've implemented a system where we fetch all products at first and then filter by title to find the desired product.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Using React Query:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- In `ProductDetailPage`, we pre-fetch the product details using `prefetchQuery` and store these data in cache.
+- We use `dehydrate` to extract the state (including cached data) from React Query and pass it to the client with `Hydrate`.
 
-## Deploy on Vercel
+- In the `ProductDetail` component, we use `useQuery` to fetch the product details from the cache, avoiding additional API calls when possible.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Styling and Components:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Uses Chakra UI for styling components and efficiently displaying product information.
+- Handles images with Next.js's `Image` component, including a replacement container in case the image isn't available.
+
+## Future Improvements
+
+1. Implement a system that allows directly fetching a product by slug from Shopify or some other optimization that reduces the need to fetch all products.
+2. Solve all warnings and possible console errors.
+3. Enhance user experience by adding additional features and optimizing page loading.
+
+## Conclusion
+
+This project demonstrates an efficient way of integrating Next.js with Shopify and making use of React Query for data and cache management. Although there are areas of improvement, it serves as a solid base for future expansions and optimizations.
