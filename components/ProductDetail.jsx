@@ -19,6 +19,8 @@ import {
   Badge,
   useColorModeValue,
 } from "@chakra-ui/react";
+// Constants
+import * as CONST from "../lib/constants";
 // Utils
 import { useQuery } from "@tanstack/react-query";
 
@@ -48,7 +50,7 @@ const ProductDetail = ({ product }) => {
     return (
       <Alert status="error" borderRadius="lg" my={4}>
         <AlertIcon />
-        <AlertTitle mr={2}>An error occurred:</AlertTitle>
+        <AlertTitle mr={2}>{CONST.ERROR_OCCURRED}</AlertTitle>
         <AlertDescription>{error.message}</AlertDescription>
       </Alert>
     );
@@ -86,15 +88,16 @@ const ProductDetail = ({ product }) => {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Text>No Image Available</Text>
+                <Text>{CONST.NO_IMAGE_AVAILABLE}</Text>
               </Box>
             )}
           </Flex>
           <Text fontSize="sm" color="gray.500" mb={2}>
-            Product ID: {data?.id}
+            {`${CONST.PRODUCT_ID} ${data?.id}`}
           </Text>
           <Text fontSize="lg" fontWeight="bold" mb={2}>
-            Vendor: <Badge colorScheme="teal">{data?.vendor}</Badge>
+            {`${CONST.PRODUCT_VENDOR} `}
+            <Badge colorScheme="teal">{data?.vendor}</Badge>
           </Text>
           <Text
             fontSize="lg"
@@ -102,7 +105,7 @@ const ProductDetail = ({ product }) => {
             dangerouslySetInnerHTML={{ __html: data?.body_html }}
           />
           <Heading as="h4" size="md" mb={2}>
-            Variants:
+            {CONST.PRODUCT_VARIANTS}
           </Heading>
           <List spacing={2} styleType="disc">
             {data?.variants.map((variant) => (

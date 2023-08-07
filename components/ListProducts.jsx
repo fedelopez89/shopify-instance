@@ -45,9 +45,17 @@ const ListProducts = () => {
     return (
       <Alert status="error" borderRadius="md" m={4}>
         <AlertIcon />
-        <AlertTitle mr={2}>An error occurred:</AlertTitle>
+        <AlertTitle mr={2}>{CONST.ERROR_OCCURRED}</AlertTitle>
         <AlertDescription>{error.message}</AlertDescription>
       </Alert>
+    );
+  }
+
+  if (data?.length === 0) {
+    return (
+      <Center height="80vh">
+        <Text fontSize="2xl">{CONST.LIST_PRODUCTS_EMPTY}</Text>
+      </Center>
     );
   }
 
