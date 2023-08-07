@@ -17,7 +17,7 @@ const getProductDetails = async ({ id }) => {
     }
   );
   const data = await response.json();
-  return data;
+  return data?.product;
 };
 
 const ProductDetailPage = async ({ params }) => {
