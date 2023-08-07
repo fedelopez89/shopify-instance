@@ -24,7 +24,7 @@ const ProductDetailPage = async ({ params }) => {
   const { id } = params;
 
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery([id], getProductDetails({ id }));
+  await queryClient.prefetchQuery([id], () => getProductDetails({ id }));
   const dehydratedState = dehydrate(queryClient);
 
   return (
