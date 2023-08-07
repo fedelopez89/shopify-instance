@@ -74,8 +74,9 @@ const ListProducts = () => {
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
         {data.map((product) => (
           <Card
-            key={product.id}
-            title={product.title}
+            id={product?.id}
+            key={product?.id}
+            title={product?.title}
             image={product?.image?.src ?? ""}
           />
         ))}

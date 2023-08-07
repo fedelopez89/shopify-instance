@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { convertTitleToHandle } from "../../../../lib/utils";
 
 export const GET = async (_, { params }) => {
-    const productTitle = params.id;
+    const productID = params.id;
     const response = await fetch(
-        `https://${process.env.SHOPNAME}.myshopify.com/admin/api/2023-07/products.json`,
+        `https://${process.env.SHOPNAME}.myshopify.com/admin/api/2023-07/products/${productID}.json`,
         {
             method: "GET",
             headers: {
@@ -14,8 +13,5 @@ export const GET = async (_, { params }) => {
         }
     );
     const data = await response.json();
-    const filterProductByTitle = data?.products?.find(
-        (product) => convertTitleToHandle(product?.title) === productTitle
-    );
-    return NextResponse.json({ product: filterProductByTitle });
+    return NextResponse.json({ product: data?.product });
 };

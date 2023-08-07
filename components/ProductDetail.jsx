@@ -24,15 +24,15 @@ import * as CONST from "../lib/constants";
 // Utils
 import { useQuery } from "@tanstack/react-query";
 
-const getProductDetail = async ({ product }) => {
-  const response = await fetch(`/api/product/${product}`);
+const getProductDetail = async ({ productId }) => {
+  const response = await fetch(`/api/product/${productId}`);
   const data = await response.json();
   return data?.product;
 };
 
-const ProductDetail = ({ product }) => {
-  const { data, isLoading, error } = useQuery([product], () =>
-    getProductDetail({ product })
+const ProductDetail = ({ productId }) => {
+  const { data, isLoading, error } = useQuery([productId], () =>
+    getProductDetail({ productId })
   );
 
   const bgColor = useColorModeValue("gray.50", "gray.800");
@@ -108,7 +108,7 @@ const ProductDetail = ({ product }) => {
             {CONST.PRODUCT_VARIANTS}
           </Heading>
           <List spacing={2} styleType="disc">
-            {data?.variants.map((variant) => (
+            {data?.variants?.map((variant) => (
               <ListItem key={variant.id}>
                 <Badge colorScheme="purple" mr={2}>
                   {variant.title}

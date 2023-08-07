@@ -6,9 +6,9 @@ import { convertTitleToHandle } from "./../lib/utils";
 // Styles
 import { Box, Text, VStack, Flex } from "@chakra-ui/react";
 
-const Card = ({ title, description, image }) => {
+const Card = ({ id, title, description, image }) => {
   return (
-    <Link href={`/product/${convertTitleToHandle(title)}`} passHref>
+    <Link href={`/product/${id}/${convertTitleToHandle(title)}`} passHref>
       <Box
         borderWidth="1px"
         borderRadius="lg"
